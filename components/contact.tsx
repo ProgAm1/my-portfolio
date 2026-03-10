@@ -1,0 +1,188 @@
+"use client";
+
+import { useState } from "react";
+import { Send, Mail, Github, Linkedin } from "lucide-react";
+import SectionTitle from "@/components/section-title";
+
+export default function Contact() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("sending");
+    // Simulate async send — wire up your preferred email service here
+    await new Promise((r) => setTimeout(r, 1200));
+    setStatus("sent");
+    setForm({ name: "", email: "", message: "" });
+  };
+
+  return (
+    <section id="contact" className="relative py-28 px-6">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[400px] w-[600px] rounded-full bg-violet-700/10 blur-[120px]" />
+      </div>
+
+      <div className="mx-auto max-w-6xl">
+        <SectionTitle
+          label="Contact"
+          title="Let's Work Together"
+          subtitle="Have a project in mind or just want to say hello? My inbox is always open."
+        />
+
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+          {/* Left — info */}
+          <div className="space-y-6">
+            <p className="text-slate-400 leading-relaxed">
+              I&apos;m currently looking for new opportunities and internships. Whether
+              you have a question, a project idea, or just want to connect — feel free
+              to reach out.
+            </p>
+
+            <div className="space-y-4">
+              {[
+                {
+                  icon: Mail,
+                  label: "Email",
+                  value: "babaset99@gmail.com",
+                  href: "mailto:babaset99@gmail.com",
+                },
+                {
+                  icon: Github,
+                  label: "GitHub",
+                  value: "github.com/ProgAm1",
+                  href: "https://github.com/ProgAm1",
+                },
+                {
+                  icon: Linkedin,
+                  label: "LinkedIn",
+                  value: "linkedin.com/in/ammarbabaset",
+                  href: "https://linkedin.com/in/ammarbabaset",
+                },
+              ].map(({ icon: Icon, label, value, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 rounded-xl border border-white/5 bg-white/[0.03] p-4 transition-all hover:border-violet-500/30 hover:bg-violet-500/5"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400 transition-colors group-hover:bg-violet-500/20">
+                    <Icon size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-500">{label}</p>
+                    <p className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                      {value}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Right — form */}
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {status === "sent" ? (
+              <div className="rounded-2xl border border-violet-500/30 bg-violet-500/10 p-8 text-center">
+                <p className="text-lg font-semibold text-violet-300">
+                  Message sent! 🎉
+                </p>
+                <p className="mt-1 text-sm text-slate-400">
+                  Thanks for reaching out. I&apos;ll get back to you soon.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setStatus("idle")}
+                  className="mt-4 text-sm text-violet-400 hover:text-violet-300 underline underline-offset-4 transition-colors"
+                >
+                  Send another message
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-slate-400">
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="Your name"
+                      className="w-full rounded-xl border border-white/5 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-slate-600 outline-none transition-all focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="mb-1.5 block text-xs font-medium text-slate-400">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="your@email.com"
+                      className="w-full rounded-xl border border-white/5 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-slate-600 outline-none transition-all focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="mb-1.5 block text-xs font-medium text-slate-400">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={5}
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Tell me about your project or opportunity..."
+                    className="w-full resize-none rounded-xl border border-white/5 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-slate-600 outline-none transition-all focus:border-violet-500/50 focus:ring-2 focus:ring-violet-500/20"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={status === "sending"}
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-violet-600 py-3 text-sm font-semibold text-white transition-all hover:bg-violet-500 hover:shadow-[0_0_24px_rgba(139,92,246,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {status === "sending" ? (
+                    <>
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                      Sending…
+                    </>
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </>
+            )}
+          </form>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <p className="mt-24 text-center text-xs text-slate-600">
+        © {new Date().getFullYear()} Ammar Babaset · Built with Next.js & Tailwind CSS
+      </p>
+    </section>
+  );
+}
