@@ -14,19 +14,22 @@ export const projects: Project[] = [
     title: "BracketClick",
     description:
       "A smart bracket management system for organizing and tracking tournaments with real-time updates, gesture-based controls, and automated bracket progression.",
-    tags: ["Python", "Computer Vision", "Flask", "WebSocket"],
-    image: "/images/project-1.png",
-    github: "https://github.com/ProgAm1",
+    tags: ["Python", "Computer Vision", "Flask", "MediaPipe", "OpenCV"],
+    image: "/images/BracketClick-Page.png",
+    github: "https://github.com/ProgAm1/Bracketclick",
     demo: "#",
   },
   {
     id: 2,
-    title: "Prescription Refill System",
+    title: "kaust-tdp43-chr20-rnaseq-study",
     description:
-      "A full-stack web application that streamlines the prescription refill process for patients and pharmacists, with secure authentication and notification support.",
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
-    image: "/images/project-2.png",
-    github: "https://github.com/ProgAm1",
+      `A bioinformatics analysis project focused on differential gene expression
+      on chromosome 20, comparing normal and TDB protein samples. Built
+      reproducible workflows in Python and R to identify significant biological
+      patterns and validate results using established analytical methods.`,
+    tags: ["Python", "R", "Bioinformatics", "Differential Gene Expression"],
+    image: "/images/kaust-tdp43-chr20-rnaseq-study.png",
+    github: "kaust-tdp43-chr20-rnaseq-study",
     demo: "#",
   },
   {

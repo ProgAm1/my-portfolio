@@ -35,25 +35,32 @@ export default function About() {
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           {/* Text block */}
           <div className="space-y-5 text-slate-400 leading-relaxed">
+            <h3 className="text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
+              Academic Background
+            </h3>
             <p>
               I&apos;m <span className="text-white font-semibold">Ammar Babaset</span>, a
-              Software Engineering student driven by the belief that great software is
-              built at the intersection of clean code, thoughtful design, and relentless
-              curiosity.
+              Software Engineering student at the University of Jeddah with a strong academic
+              foundation in software development, problem solving, and technical project work.
             </p>
+            <h3 className="text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
+              Technical Interests
+            </h3>
             <p>
-              My journey started with Python scripts and quickly expanded to full-stack
-              web development, computer vision projects, and scalable backend systems. I
-              love working on projects that challenge me to think differently and deliver
-              real value.
+              Interested in computer vision, web development, and bioinformatics,
+              with hands-on experience using Python, Java, C/C++, R, and modern development tools.
             </p>
+            <h3 className="text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
+              Career Goal
+            </h3>
             <p>
-              Outside of coding, I enjoy exploring the latest advancements in AI,
-              contributing to open-source projects, and mentoring peers in my program.
+              Passionate about building practical systems and currently seeking
+              internship opportunities to apply technical skills, gain industry experience,
+              and contribute to real-world projects.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
-              {["Saudi Arabia 🇸🇦", "CS + SE", "Open to Remote"].map((tag) => (
+              {["SE", "Open to Remote"].map((tag) => (
                 <span
                   key={tag}
                   className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300"
