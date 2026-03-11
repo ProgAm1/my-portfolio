@@ -5,17 +5,17 @@ const categoryMeta: Record<string, { icon: string; gradient: string; glow: strin
   Languages: {
     icon: "⌨️",
     gradient: "from-violet-500/20 to-indigo-500/10",
-    glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
+    glow: "shadow-[0_0_30px_rgba(139,92,246,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
   Frontend: {
     icon: "🎨",
     gradient: "from-violet-500/20 to-indigo-500/10",
-    glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
+    glow: "shadow-[0_0_30px_rgba(139,92,246,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
   "Backend & Tools": {
     icon: "⚙️",
     gradient: "from-violet-500/20 to-indigo-500/10",
-    glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
+    glow: "shadow-[0_0_30px_rgba(139,92,246,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
 };
 
@@ -57,7 +57,7 @@ export default function Skills() {
               >
                 {/* Card gradient tint */}
                 <div
-                  className={`pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br ${meta.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                  className={`pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br ${meta.gradient} opacity-100 md:opacity-0 transition-opacity duration-300 md:group-hover:opacity-100`}
                 />
 
                 {/* Header */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -57,6 +57,11 @@ export default function Hero() {
       {/* Social links */}
       <div className="mt-10 flex items-center gap-5">
         {[
+          {
+            icon: Twitter,
+            href: "https://x.com/xlihi0",
+            label: "X / Twitter",
+          },
           {
             icon: Github,
             href: "https://github.com/ProgAm1",

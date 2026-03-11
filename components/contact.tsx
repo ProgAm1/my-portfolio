@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, Mail, Github, Linkedin } from "lucide-react";
+import { Send, Mail, Github, Linkedin, Twitter } from "lucide-react";
 import SectionTitle from "@/components/section-title";
 
 export default function Contact() {
@@ -47,6 +47,12 @@ export default function Contact() {
 
             <div className="space-y-4">
               {[
+                {
+                  icon: Twitter,
+                  label: "X / Twitter",
+                  value: "@xlihi0",
+                  href: "https://x.com/xlihi0",
+                },
                 {
                   icon: Mail,
                   label: "Email",
