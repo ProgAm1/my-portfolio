@@ -34,12 +34,12 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    title: "Film Reviews Website",
+    title: "SlideMind",
     description:
-      "A community-driven platform for discovering and reviewing films, featuring search, filtering, user ratings, and personalized watchlists.",
-    tags: ["React", "Node.js", "MongoDB", "REST API"],
-    image: "/images/project-3.png",
-    github: "https://github.com/ProgAm1",
+      "Intelligent flashcard generator built in Java, using Claude API integration to convert raw study content into organized, review-ready learning assets.",
+    tags: ["Java", "Claude API", "REST API"],
+    image: "/images/SlideMind.png",
+    github: "https://github.com/ProgAm1/Slide-Mind-Project",
     demo: "#",
   },
 ];

@@ -7,8 +7,8 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-  { label: "CV", href: "/cv.pdf" }
+  { label: "CV", href: "#cv" },
+  { label: "Contact", href: "#contact" }
 ];
 
 export default function Navbar() {
@@ -24,8 +24,8 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-[#0a0a0f]/90 backdrop-blur-md border-b border-white/5 shadow-lg"
-          : "bg-transparent"
+        ? "bg-[#0a0a0f]/90 backdrop-blur-md border-b border-white/5 shadow-lg"
+        : "bg-transparent"
         }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
