@@ -29,14 +29,14 @@ export const projects: Project[] = [
       patterns and validate results using established analytical methods.`,
     tags: ["Python", "R", "Bioinformatics", "Differential Gene Expression"],
     image: "/images/kaust-tdp43-chr20-rnaseq-study.png",
-    github: "kaust-tdp43-chr20-rnaseq-study",
+    github: "https://github.com/ProgAm1/kaust-tdp43-chr20-rnaseq-study",
     demo: "#",
   },
   {
     id: 3,
     title: "SlideMind",
     description:
-      "Intelligent flashcard generator built in Java, using Claude API integration to convert raw study content into organized, review-ready learning assets.",
+      "Intelligent flashcard generator built using Java, using Claude API integration to convert raw study content into organized, review-ready learning assets.",
     tags: ["Java", "Claude API", "REST API"],
     image: "/images/SlideMind.png",
     github: "https://github.com/ProgAm1/Slide-Mind-Project",
