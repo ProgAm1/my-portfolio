@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import { useRef } from "react";
+import { useIsMobile } from "@/components/animations";
 
 const socials = [
   { icon: Twitter, href: "https://x.com/xlihi0", label: "X / Twitter" },
@@ -28,25 +29,27 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // Background blobs parallax effect
-  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
+  const isMobile = useIsMobile();
+
+  // Background blobs parallax effect (disabled on mobile for performance)
+  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", isMobile ? "0%" : "50%"]);
+  const y2 = useTransform(scrollYProgress, [0, 1], ["0%", isMobile ? "0%" : "-50%"]);
 
   return (
     <section
       id="hero"
       ref={ref}
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center"
+      className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center"
     >
       {/* Ambient background blobs with Parallax */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div 
           style={{ y: y1 }}
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[500px] w-[500px] rounded-full bg-violet-700/20 blur-[120px]" 
+          className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-violet-700/20 blur-[80px] md:blur-[120px] transition-transform will-change-transform" 
         />
         <motion.div 
           style={{ y: y2 }}
-          className="absolute bottom-1/4 right-1/4 h-[350px] w-[350px] rounded-full bg-indigo-600/15 blur-[100px]" 
+          className="absolute bottom-1/4 right-1/4 h-[250px] w-[250px] md:h-[350px] md:w-[350px] rounded-full bg-indigo-600/15 blur-[60px] md:blur-[100px] transition-transform will-change-transform" 
         />
       </div>
 

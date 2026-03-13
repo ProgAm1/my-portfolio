@@ -9,8 +9,8 @@ import { FadeIn } from "@/components/animations";
 export default function Projects() {
   return (
     <section id="projects" className="relative py-28 px-6">
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute right-0 top-1/3 h-[400px] w-[400px] rounded-full bg-violet-700/10 blur-[100px]" />
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute right-0 top-1/3 h-[250px] w-[250px] md:h-[400px] md:w-[400px] rounded-full bg-violet-700/10 blur-[60px] md:blur-[100px]" />
       </div>
 
       <div className="mx-auto max-w-6xl">

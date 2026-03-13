@@ -9,7 +9,7 @@ const highlights = [
     description:
       "Comfortable across the entire stack—building React frontends, RESTful APIs, and database-driven backends.",
     gradient: "from-violet-500/10 to-indigo-500/10",
-    glow: "shadow-[0_0_30px_rgba(139,92,246,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
+    glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
   {
     icon: Cpu,
@@ -17,7 +17,7 @@ const highlights = [
     description:
       "Strong foundation in computer science fundamentals, data structures, and algorithm design from hands-on coursework.",
     gradient: "from-cyan-500/10 to-blue-500/10",
-    glow: "shadow-[0_0_30px_rgba(6,182,212,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(6,182,212,0.12)]",
+    glow: "hover:shadow-[0_0_30px_rgba(6,182,212,0.12)]",
   },
   {
     icon: BookOpen,
@@ -25,7 +25,7 @@ const highlights = [
     description:
       "Always exploring new technologies—currently deepening expertise in cloud-native architectures and AI integrations.",
     gradient: "from-emerald-500/10 to-teal-500/10",
-    glow: "shadow-[0_0_30px_rgba(16,185,129,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]",
+    glow: "hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]",
   },
 ];
 
@@ -85,7 +85,7 @@ export default function About() {
             {highlights.map(({ icon: Icon, title, description, gradient, glow }, index) => (
               <FadeIn key={title} delay={0.15 + index * 0.1}>
                 <div
-                  className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/30 ${glow}`}
+                  className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/30 will-change-transform ${glow}`}
                 >
                   {/* Gradient background */}
                   <div

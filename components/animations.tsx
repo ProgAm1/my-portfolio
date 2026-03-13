@@ -5,7 +5,7 @@ import { ReactNode, useState, useEffect } from "react";
 
 
 // ─── useIsMobile ────────────────────────────────────────────────────────────
-function useIsMobile(breakpoint = 768) {
+export function useIsMobile(breakpoint = 768) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

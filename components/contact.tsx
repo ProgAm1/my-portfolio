@@ -26,8 +26,8 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-28 px-6">
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[400px] w-[600px] rounded-full bg-violet-700/10 blur-[120px]" />
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[250px] w-[400px] md:h-[400px] md:w-[600px] rounded-full bg-violet-700/10 blur-[80px] md:blur-[120px]" />
       </div>
 
       <div className="mx-auto max-w-6xl">

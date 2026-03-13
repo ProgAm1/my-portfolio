@@ -34,7 +34,7 @@ export default function Navbar() {
           href="#"
           className="text-xl font-bold tracking-tight text-white hover:text-violet-400 transition-colors"
         >
-          AM<span className="text-violet-500">.</span>
+          AM<span className="text-violet-500"></span>
         </a>
 
         {/* Desktop links */}

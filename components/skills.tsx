@@ -4,23 +4,23 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { skillCategories } from "@/data/skills";
 import SectionTitle from "@/components/section-title";
-import { FadeIn } from "@/components/animations";
+import { FadeIn, useIsMobile } from "@/components/animations";
 
 const categoryMeta: Record<string, { icon: string; gradient: string; glow: string }> = {
   Languages: {
     icon: "⌨️",
     gradient: "from-violet-500/20 to-indigo-500/10",
-    glow: "shadow-[0_0_30px_rgba(139,92,246,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
+    glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
   Frontend: {
     icon: "🎨",
     gradient: "from-violet-500/20 to-indigo-500/10",
-    glow: "shadow-[0_0_30px_rgba(139,92,246,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
+    glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
   "Backend & Tools": {
     icon: "⚙️",
     gradient: "from-violet-500/20 to-indigo-500/10",
-    glow: "shadow-[0_0_30px_rgba(139,92,246,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
+    glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
 };
 
@@ -37,20 +37,22 @@ export default function Skills() {
     offset: ["start end", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
+  const isMobile = useIsMobile();
+
+  const y1 = useTransform(scrollYProgress, [0, 1], ["-20%", isMobile ? "-20%" : "20%"]);
+  const y2 = useTransform(scrollYProgress, [0, 1], ["20%", isMobile ? "20%" : "-20%"]);
 
   return (
     <section id="skills" ref={ref} className="relative py-28 px-6">
       {/* Background accents */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div 
           style={{ y: y1 }}
-          className="absolute left-0 top-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-violet-700/8 blur-[120px]" 
+          className="absolute left-0 top-1/2 -translate-y-1/2 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-violet-700/8 blur-[80px] md:blur-[120px] transition-transform will-change-transform" 
         />
         <motion.div 
           style={{ y: y2 }}
-          className="absolute right-0 bottom-0 h-[300px] w-[400px] rounded-full bg-cyan-700/6 blur-[100px]" 
+          className="absolute right-0 bottom-0 h-[200px] w-[250px] md:h-[300px] md:w-[400px] rounded-full bg-cyan-700/6 blur-[60px] md:blur-[100px] transition-transform will-change-transform" 
         />
       </div>
 
@@ -75,7 +77,7 @@ export default function Skills() {
             return (
               <FadeIn key={cat.category} delay={0.1 + index * 0.1}>
                 <div
-                  className={`group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 ${meta.glow} hover:-translate-y-1 h-full`}
+                  className={`group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 ${meta.glow} hover:-translate-y-1 will-change-transform h-full`}
                 >
                   {/* Card gradient tint */}
                   <div

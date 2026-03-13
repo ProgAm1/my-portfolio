@@ -9,8 +9,8 @@ export default function CV() {
     return (
         <section id="cv" className="relative py-28 px-6">
             {/* Background glow */}
-            <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-                <div className="absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-700/10 blur-[130px]" />
+            <div className="pointer-events-none absolute inset-0 -z-10">
+                <div className="absolute left-1/2 top-1/2 h-[350px] w-[450px] md:h-[500px] md:w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-700/10 blur-[80px] md:blur-[130px]" />
             </div>
 
             <div className="mx-auto max-w-4xl">
