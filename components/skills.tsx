@@ -1,5 +1,10 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { skillCategories } from "@/data/skills";
 import SectionTitle from "@/components/section-title";
+import { FadeIn } from "@/components/animations";
 
 const categoryMeta: Record<string, { icon: string; gradient: string; glow: string }> = {
   Languages: {
@@ -26,23 +31,40 @@ const pillColor: Record<string, string> = {
 };
 
 export default function Skills() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+  const y2 = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
+
   return (
-    <section id="skills" className="relative py-28 px-6">
+    <section id="skills" ref={ref} className="relative py-28 px-6">
       {/* Background accents */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-violet-700/8 blur-[120px]" />
-        <div className="absolute right-0 bottom-0 h-[300px] w-[400px] rounded-full bg-cyan-700/6 blur-[100px]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <motion.div 
+          style={{ y: y1 }}
+          className="absolute left-0 top-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-violet-700/8 blur-[120px]" 
+        />
+        <motion.div 
+          style={{ y: y2 }}
+          className="absolute right-0 bottom-0 h-[300px] w-[400px] rounded-full bg-cyan-700/6 blur-[100px]" 
+        />
       </div>
 
       <div className="mx-auto max-w-6xl">
-        <SectionTitle
-          label="Skills"
-          title="Tools & Technologies"
-          subtitle="Technologies I work with across the full lifecycle of a project."
-        />
+        <FadeIn>
+          <SectionTitle
+            label="Skills"
+            title="Tools & Technologies"
+            subtitle="Technologies I work with across the full lifecycle of a project."
+          />
+        </FadeIn>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {skillCategories.map((cat) => {
+          {skillCategories.map((cat, index) => {
             const meta = categoryMeta[cat.category] ?? {
               icon: "🔧",
               gradient: "from-slate-500/20 to-slate-500/10",
@@ -51,37 +73,38 @@ export default function Skills() {
             const pill = pillColor[cat.category] ?? "";
 
             return (
-              <div
-                key={cat.category}
-                className={`group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 ${meta.glow} hover:-translate-y-1`}
-              >
-                {/* Card gradient tint */}
+              <FadeIn key={cat.category} delay={0.1 + index * 0.1}>
                 <div
-                  className={`pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br ${meta.gradient} opacity-100 md:opacity-0 transition-opacity duration-300 md:group-hover:opacity-100`}
-                />
+                  className={`group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 ${meta.glow} hover:-translate-y-1 h-full`}
+                >
+                  {/* Card gradient tint */}
+                  <div
+                    className={`pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br ${meta.gradient} opacity-100 md:opacity-0 transition-opacity duration-300 md:group-hover:opacity-100`}
+                  />
 
-                {/* Header */}
-                <div className="mb-5 flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 text-lg border border-white/8">
-                    {meta.icon}
-                  </span>
-                  <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-300">
-                    {cat.category}
-                  </h3>
-                </div>
-
-                {/* Pills */}
-                <div className="flex flex-wrap gap-2">
-                  {cat.skills.map((skill) => (
-                    <span
-                      key={skill.name}
-                      className={`cursor-default rounded-lg border border-white/8 bg-white/[0.04] px-3 py-1.5 text-sm font-medium text-slate-400 transition-all duration-200 ${pill}`}
-                    >
-                      {skill.name}
+                  {/* Header */}
+                  <div className="mb-5 flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 text-lg border border-white/8">
+                      {meta.icon}
                     </span>
-                  ))}
+                    <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-300">
+                      {cat.category}
+                    </h3>
+                  </div>
+
+                  {/* Pills */}
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill) => (
+                      <span
+                        key={skill.name}
+                        className={`cursor-default rounded-lg border border-white/8 bg-white/[0.04] px-3 py-1.5 text-sm font-medium text-slate-400 transition-all duration-200 ${pill}`}
+                      >
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </FadeIn>
             );
           })}
         </div>

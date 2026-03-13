@@ -1,5 +1,6 @@
 import { Code2, BookOpen, Cpu } from "lucide-react";
 import SectionTitle from "@/components/section-title";
+import { FadeIn } from "@/components/animations";
 
 const highlights = [
   {
@@ -7,18 +8,24 @@ const highlights = [
     title: "Full-Stack Development",
     description:
       "Comfortable across the entire stack—building React frontends, RESTful APIs, and database-driven backends.",
+    gradient: "from-violet-500/10 to-indigo-500/10",
+    glow: "shadow-[0_0_30px_rgba(139,92,246,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
   {
     icon: Cpu,
     title: "Systems & Algorithms",
     description:
       "Strong foundation in computer science fundamentals, data structures, and algorithm design from hands-on coursework.",
+    gradient: "from-cyan-500/10 to-blue-500/10",
+    glow: "shadow-[0_0_30px_rgba(6,182,212,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(6,182,212,0.12)]",
   },
   {
     icon: BookOpen,
     title: "Continuous Learner",
     description:
       "Always exploring new technologies—currently deepening expertise in cloud-native architectures and AI integrations.",
+    gradient: "from-emerald-500/10 to-teal-500/10",
+    glow: "shadow-[0_0_30px_rgba(16,185,129,0.12)] md:shadow-none md:hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]",
   },
 ];
 
@@ -26,15 +33,17 @@ export default function About() {
   return (
     <section id="about" className="relative py-28 px-6">
       <div className="mx-auto max-w-6xl">
-        <SectionTitle
-          label="About Me"
-          title="Crafting software with purpose"
-          subtitle="A passionate software engineering student turning ideas into elegant, production-ready applications."
-        />
+        <FadeIn>
+          <SectionTitle
+            label="About Me"
+            title="Crafting software with purpose"
+            subtitle="A passionate software engineering student turning ideas into elegant, production-ready applications."
+          />
+        </FadeIn>
 
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           {/* Text block */}
-          <div className="space-y-5 text-slate-400 leading-relaxed">
+          <FadeIn delay={0.1} className="space-y-5 text-slate-400 leading-relaxed">
             <h3 className="text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
               Academic Background
             </h3>
@@ -69,25 +78,38 @@ export default function About() {
                 </span>
               ))}
             </div>
-          </div>
+          </FadeIn>
 
           {/* Highlight cards */}
           <div className="grid gap-4">
-            {highlights.map(({ icon: Icon, title, description }) => (
-              <div
-                key={title}
-                className="group flex gap-4 rounded-2xl border border-white/5 bg-white/[0.03] p-5 transition-all hover:border-violet-500/30 hover:bg-violet-500/5"
-              >
-                <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400 transition-colors group-hover:bg-violet-500/20">
-                  <Icon size={20} />
+            {highlights.map(({ icon: Icon, title, description, gradient, glow }, index) => (
+              <FadeIn key={title} delay={0.15 + index * 0.1}>
+                <div
+                  className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/30 ${glow}`}
+                >
+                  {/* Gradient background */}
+                  <div
+                    className={`pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br ${gradient} opacity-50 transition-opacity duration-300 group-hover:opacity-80`}
+                  />
+
+                  {/* Soft light overlay */}
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-white/[0.02] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                  {/* Content */}
+                  <div className="relative flex gap-4">
+                    <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400 transition-colors group-hover:bg-violet-500/20">
+                      <Icon size={20} />
+                    </div>
+
+                    <div>
+                      <h3 className="font-semibold text-white">{title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-slate-400">
+                        {description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-white">{title}</h3>
-                  <p className="mt-1 text-sm text-slate-500 leading-relaxed">
-                    {description}
-                  </p>
-                </div>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
