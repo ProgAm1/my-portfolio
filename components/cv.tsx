@@ -7,17 +7,18 @@ const CV_PATH = "/CV/Ammar_Yaser_Babaset_Software_Intern.pdf";
 
 export default function CV() {
     return (
-        <section id="cv" className="relative py-28 px-6">
+        <section id="cv" className="relative py-20 md:py-28 px-4 sm:px-6">
             {/* Background glow */}
             <div className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute left-1/2 top-1/2 h-[350px] w-[450px] md:h-[500px] md:w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-700/10 blur-[80px] md:blur-[130px]" />
             </div>
 
-            <div className="mx-auto max-w-4xl">
+            <div className="mx-auto max-w-4xl ">
                 <SectionTitle
                     label="Resume"
                     title="My CV"
                     subtitle="A quick look at my background, skills, and experience."
+                    subtitleClassName="-translate-y-2 lg:-translate-y-3"
                 />
 
                 {/* ── CV Card ── */}
@@ -63,24 +64,24 @@ export default function CV() {
                     </div>
 
                     {/* ── MOBILE: action card ── */}
-                    <div className="md:hidden flex flex-col items-center gap-6 px-6 py-10">
-                        <div className="flex items-center justify-center w-20 h-20 rounded-2xl bg-violet-600/10 border border-violet-500/20 shadow-[0_0_30px_rgba(139,92,246,0.15)]">
-                            <FileText size={36} className="text-violet-400" />
+                    <div className="md:hidden flex flex-col items-center justify-center gap-5 px-5 py-8">
+                        <div className="flex items-center justify-center w-16 h-16 rounded-2xl bg-violet-600/10 border border-violet-500/20 shadow-[0_0_30px_rgba(139,92,246,0.15)]">
+                            <FileText size={32} className="text-violet-400" />
                         </div>
-                        <div className="text-center space-y-2">
-                            <p className="text-base font-semibold text-white/90">
+                        <div className="text-center space-y-1.5">
+                            <p className="text-sm font-semibold text-white/90">
                                 Ammar Yaser Babaset — CV
                             </p>
-                            <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+                            <p className="text-xs text-slate-500 leading-relaxed max-w-xs">
                                 Tap below to view or download the full CV. For the best experience, open it in your browser&apos;s PDF viewer.
                             </p>
                         </div>
-                        <div className="flex items-center gap-3 w-full max-w-xs">
+                        <div className="flex items-center gap-3 w-full max-w-[200px] mt-2">
                             <a
                                 href={CV_PATH}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-5 py-3 text-sm font-medium text-slate-300 hover:bg-white/[0.08] hover:text-white transition-all active:scale-95"
+                                className="w-full flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2.5 text-xs font-medium text-slate-300 hover:bg-white/[0.08] hover:text-white transition-all active:scale-95"
                             >
                                 <Eye size={16} />
                                 View CV
@@ -90,8 +91,8 @@ export default function CV() {
 
 
                     {/* Bottom action bar */}
-                    <div className="flex items-center justify-between border-t border-white/5 bg-white/[0.025] px-6 py-3">
-                        <p className="text-sm text-slate-500">
+                    <div className="flex items-center justify-between border-t border-white/5 bg-white/[0.025] px-4 md:px-6 py-3">
+                        <p className="text-xs md:text-sm text-slate-500">
                             Last updated · March 2026
                         </p>
                         <a

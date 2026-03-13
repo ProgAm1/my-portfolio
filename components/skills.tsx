@@ -43,16 +43,16 @@ export default function Skills() {
   const y2 = useTransform(scrollYProgress, [0, 1], ["20%", isMobile ? "20%" : "-20%"]);
 
   return (
-    <section id="skills" ref={ref} className="relative py-28 px-6">
+    <section id="skills" ref={ref} className="relative py-20 md:py-28 px-4 sm:px-6">
       {/* Background accents */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div 
           style={{ y: y1 }}
-          className="absolute left-0 top-1/2 -translate-y-1/2 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-violet-700/8 blur-[80px] md:blur-[120px] transition-transform will-change-transform" 
+          className="absolute left-0 top-1/2 -translate-y-1/2 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-violet-700/8 blur-[80px] md:blur-[120px] transition-transform" 
         />
         <motion.div 
           style={{ y: y2 }}
-          className="absolute right-0 bottom-0 h-[200px] w-[250px] md:h-[300px] md:w-[400px] rounded-full bg-cyan-700/6 blur-[60px] md:blur-[100px] transition-transform will-change-transform" 
+          className="absolute right-0 bottom-0 h-[200px] w-[250px] md:h-[300px] md:w-[400px] rounded-full bg-cyan-700/6 blur-[60px] md:blur-[100px] transition-transform" 
         />
       </div>
 
@@ -65,7 +65,7 @@ export default function Skills() {
           />
         </FadeIn>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8 md:mt-12">
           {skillCategories.map((cat, index) => {
             const meta = categoryMeta[cat.category] ?? {
               icon: "🔧",
@@ -77,7 +77,7 @@ export default function Skills() {
             return (
               <FadeIn key={cat.category} delay={0.1 + index * 0.1}>
                 <div
-                  className={`group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-6 transition-all duration-300 ${meta.glow} hover:-translate-y-1 will-change-transform h-full`}
+                  className={`group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-5 md:p-6 transition-all duration-300 ${meta.glow} hover:-translate-y-1 h-full`}
                 >
                   {/* Card gradient tint */}
                   <div
@@ -85,11 +85,11 @@ export default function Skills() {
                   />
 
                   {/* Header */}
-                  <div className="mb-5 flex items-center gap-3">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 text-lg border border-white/8">
+                  <div className="mb-4 md:mb-5 flex items-center gap-3">
+                    <span className="flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-xl bg-white/5 text-base md:text-lg border border-white/8">
                       {meta.icon}
                     </span>
-                    <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-300">
+                    <h3 className="text-xs md:text-sm font-semibold uppercase tracking-widest text-slate-300">
                       {cat.category}
                     </h3>
                   </div>
@@ -99,7 +99,7 @@ export default function Skills() {
                     {cat.skills.map((skill) => (
                       <span
                         key={skill.name}
-                        className={`cursor-default rounded-lg border border-white/8 bg-white/[0.04] px-3 py-1.5 text-sm font-medium text-slate-400 transition-all duration-200 ${pill}`}
+                        className={`cursor-default rounded-lg border border-white/8 bg-white/[0.04] px-2.5 py-1 md:px-3 md:py-1.5 text-xs md:text-sm font-medium text-slate-400 transition-all duration-200 ${pill}`}
                       >
                         {skill.name}
                       </span>

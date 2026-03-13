@@ -25,7 +25,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-28 px-6">
+    <section id="contact" className="relative py-20 md:py-28 px-4 sm:px-6">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[250px] w-[400px] md:h-[400px] md:w-[600px] rounded-full bg-violet-700/10 blur-[80px] md:blur-[120px]" />
       </div>
@@ -39,9 +39,9 @@ export default function Contact() {
           />
         </FadeIn>
 
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div className="grid gap-10 md:gap-12 lg:grid-cols-2 lg:items-start mt-8 md:mt-12">
           {/* Left — info */}
-          <div className="space-y-6">
+          <div className="space-y-6 md:space-y-8">
             <FadeIn delay={0.05}>
               <p className="text-slate-400 leading-relaxed">
                 I&apos;m currently looking for new opportunities and internships. Whether
@@ -88,8 +88,8 @@ export default function Contact() {
                       <Icon size={18} />
                     </div>
                     <div>
-                      <p className="text-xs text-slate-500">{label}</p>
-                      <p className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                      <p className="text-[10px] md:text-xs text-slate-500">{label}</p>
+                      <p className="text-xs md:text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
                         {value}
                       </p>
                     </div>

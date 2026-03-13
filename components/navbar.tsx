@@ -72,24 +72,24 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0d0d18]/95 backdrop-blur-md border-t border-white/5 px-6 pb-6 pt-2">
-          <ul className="flex flex-col gap-4">
+        <div className="md:hidden bg-[#0d0d18]/95 backdrop-blur-md border-t border-white/5 px-6 pb-8 pt-4">
+          <ul className="flex flex-col gap-6">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="block text-sm text-slate-300 hover:text-white transition-colors py-1"
+                  className="block text-base font-medium text-slate-300 hover:text-white transition-colors py-2"
                 >
                   {link.label}
                 </a>
               </li>
             ))}
-            <li>
+            <li className="pt-2">
               <a
                 href="#contact"
                 onClick={() => setMenuOpen(false)}
-                className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2 text-sm font-medium text-white hover:bg-violet-500 transition-all"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-violet-600 px-5 py-3 text-base font-medium text-white hover:bg-violet-500 transition-all"
               >
                 Hire Me
               </a>

@@ -8,7 +8,7 @@ import { FadeIn } from "@/components/animations";
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-28 px-6">
+    <section id="projects" className="relative py-20 md:py-28 px-4 sm:px-6">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute right-0 top-1/3 h-[250px] w-[250px] md:h-[400px] md:w-[400px] rounded-full bg-violet-700/10 blur-[60px] md:blur-[100px]" />
       </div>
@@ -21,7 +21,7 @@ export default function Projects() {
             subtitle="A selection of projects that showcase my problem-solving approach and technical range."
           />
         </FadeIn>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3 mt-8 md:mt-12">
           {projects.map((project) => (
             <FadeIn key={project.id} className="h-full">
               <article
@@ -41,9 +41,9 @@ export default function Projects() {
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-bold text-white">{project.title}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-500">
+                <div className="flex flex-1 flex-col p-5 md:p-6">
+                  <h3 className="text-base md:text-lg font-bold text-white">{project.title}</h3>
+                  <p className="mt-2 flex-1 text-xs md:text-sm leading-relaxed text-slate-500">
                     {project.description}
                   </p>
 

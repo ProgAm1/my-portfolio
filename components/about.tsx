@@ -16,7 +16,7 @@ const highlights = [
     title: "Systems & Algorithms",
     description:
       "Strong foundation in computer science fundamentals, data structures, and algorithm design from hands-on coursework.",
-    gradient: "from-cyan-500/10 to-blue-500/10",
+    gradient: "from-violet-500/10 to-indigo-500/10",
     glow: "hover:shadow-[0_0_30px_rgba(6,182,212,0.12)]",
   },
   {
@@ -24,14 +24,14 @@ const highlights = [
     title: "Continuous Learner",
     description:
       "Always exploring new technologies—currently deepening expertise in cloud-native architectures and AI integrations.",
-    gradient: "from-emerald-500/10 to-teal-500/10",
+    gradient: "from-violet-500/10 to-indigo-500/10",
     glow: "hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]",
   },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="relative py-28 px-6">
+    <section id="about" className="relative py-20 md:py-28 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <FadeIn>
           <SectionTitle
@@ -41,10 +41,10 @@ export default function About() {
           />
         </FadeIn>
 
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-8 md:gap-10 lg:grid-cols-2 lg:items-center mt-8 md:mt-12">
           {/* Text block */}
-          <FadeIn delay={0.1} className="space-y-5 text-slate-400 leading-relaxed">
-            <h3 className="text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
+          <FadeIn delay={0.1} className="space-y-4 md:space-y-5 text-sm md:text-base text-slate-400 leading-relaxed">
+            <h3 className="text-base md:text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
               Academic Background
             </h3>
             <p>
@@ -52,14 +52,14 @@ export default function About() {
               Software Engineering student at the University of Jeddah with a strong academic
               foundation in software development, problem solving, and technical project work.
             </p>
-            <h3 className="text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
+            <h3 className="text-base md:text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
               Technical Interests
             </h3>
             <p>
               Interested in computer vision, web development, and bioinformatics,
               with hands-on experience using Python, Java, C/C++, R, and modern development tools.
             </p>
-            <h3 className="text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
+            <h3 className="text-base md:text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
               Career Goal
             </h3>
             <p>
@@ -81,11 +81,11 @@ export default function About() {
           </FadeIn>
 
           {/* Highlight cards */}
-          <div className="grid gap-4">
+          <div className="grid gap-4 mt-4 lg:mt-0">
             {highlights.map(({ icon: Icon, title, description, gradient, glow }, index) => (
               <FadeIn key={title} delay={0.15 + index * 0.1}>
                 <div
-                  className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/30 will-change-transform ${glow}`}
+                  className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/30 ${glow}`}
                 >
                   {/* Gradient background */}
                   <div
@@ -102,8 +102,8 @@ export default function About() {
                     </div>
 
                     <div>
-                      <h3 className="font-semibold text-white">{title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-slate-400">
+                      <h3 className="text-sm md:text-base font-semibold text-white">{title}</h3>
+                      <p className="mt-1 text-xs md:text-sm leading-relaxed text-slate-400">
                         {description}
                       </p>
                     </div>

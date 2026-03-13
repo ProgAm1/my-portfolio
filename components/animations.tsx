@@ -21,7 +21,7 @@ export function useIsMobile(breakpoint = 768) {
 // ─── Shared variants ───────────────────────────────────────────────────────
 
 const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 16 },
   visible: (delay: number = 0) => ({
     opacity: 1,
     y: 0,
@@ -44,7 +44,7 @@ const staggerContainerVariants: Variants = {
 };
 
 const staggerItemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
@@ -78,10 +78,10 @@ export function FadeIn({
 }: FadeInProps) {
   const isMobile = useIsMobile();
   const directionOffset = {
-    up: { y: 28, x: 0 },
-    down: { y: -28, x: 0 },
-    left: { y: 0, x: 28 },
-    right: { y: 0, x: -28 },
+    up: { y: isMobile ? 12 : 28, x: 0 },
+    down: { y: isMobile ? -12 : -28, x: 0 },
+    left: { y: 0, x: isMobile ? 12 : 28 },
+    right: { y: 0, x: isMobile ? -12 : -28 },
   }[direction];
 
   return (
@@ -89,12 +89,13 @@ export function FadeIn({
       className={className}
       initial={{ opacity: 0, ...directionOffset }}
       whileInView={{ opacity: 1, y: 0, x: 0 }}
-      viewport={{ amount: isMobile ? 0.1 : 0.5, margin: "-60px" }}
+      viewport={{ once: false, amount: isMobile ? 0.05 : 0.4, margin: isMobile ? "0px 0px -10% 0px" : "-40px" }}
       transition={{
         duration: 0.6,
         ease: [0.22, 1, 0.36, 1],
         delay,
       }}
+      style={{ willChange: "auto" }} // clear auto-injected will-change on completion to stop blur
     >
       {children}
     </motion.div>
@@ -126,7 +127,7 @@ export function Stagger({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount: isMobile ? 0.1 : 0.5, margin: "-60px" }}
+      viewport={{ once: false, amount: isMobile ? 0.05 : 0.3, margin: isMobile ? "0px 0px -10% 0px" : "-40px" }}
       variants={{
         hidden: {},
         visible: {
