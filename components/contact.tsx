@@ -7,7 +7,8 @@ import { FadeIn } from "@/components/animations";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -18,10 +19,30 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
-    // Simulate async send — wire up your preferred email service here
-    await new Promise((r) => setTimeout(r, 1200));
-    setStatus("sent");
-    setForm({ name: "", email: "", message: "" });
+    setErrorMessage("");
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message.");
+      }
+
+      setStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+    } catch (error: any) {
+      console.error("Form submission error:", error);
+      setStatus("error");
+      setErrorMessage(error.message || "Something went wrong. Please try again later.");
+    }
   };
 
   return (
@@ -120,6 +141,12 @@ export default function Contact() {
                 </div>
               ) : (
                 <>
+                  {status === "error" && (
+                    <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-200">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-slate-400">
