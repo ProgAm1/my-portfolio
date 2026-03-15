@@ -43,13 +43,13 @@ export default function Hero() {
     >
       {/* Ambient background blobs with Parallax */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <motion.div 
+        <motion.div
           style={{ y: y1 }}
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-violet-700/20 blur-[80px] md:blur-[120px] transition-transform" 
+          className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-violet-700/20 blur-[80px] md:blur-[120px] transition-transform"
         />
-        <motion.div 
+        <motion.div
           style={{ y: y2 }}
-          className="absolute bottom-1/4 right-1/4 h-[250px] w-[250px] md:h-[350px] md:w-[350px] rounded-full bg-indigo-600/15 blur-[60px] md:blur-[100px] transition-transform" 
+          className="absolute bottom-1/4 right-1/4 h-[250px] w-[250px] md:h-[350px] md:w-[350px] rounded-full bg-indigo-600/15 blur-[60px] md:blur-[100px] transition-transform"
         />
       </div>
 
@@ -74,13 +74,14 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p variants={item} className="mt-4 md:mt-6 text-base font-medium text-slate-400 sm:text-lg md:text-xl">
-          Software Engineering Student
+          Software Engineering Student & Full-Stack Developer
         </motion.p>
 
         <motion.p variants={item} className="mt-4 md:mt-6 max-w-2xl text-sm md:text-base leading-relaxed text-slate-500 px-2 sm:px-4 md:px-0">
-          I build clean, performant web applications with modern technologies. Passionate
-          about crafting experiences that feel as good as they look—from pixel-perfect
-          interfaces to robust backend systems.
+          I build practical, user-focused web applications and enjoy turning ideas into real
+          products through clean, scalable development.
+          Open to internships and opportunities where I can grow,
+          contribute, and build impactful software.
         </motion.p>
 
         {/* CTA buttons */}
