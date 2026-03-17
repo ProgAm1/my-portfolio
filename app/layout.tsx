@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ScrollProgress from "@/components/scroll-progress";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body
         className={`font-sans antialiased bg-[#0a0a0f] text-white selection:bg-violet-500/30 overflow-x-hidden`}
       >
+        <ScrollProgress />
         {children}
       </body>
     </html>

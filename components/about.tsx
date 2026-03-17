@@ -21,7 +21,7 @@ const highlights = [
   },
   {
     icon: BookOpen,
-    title: "Continuous Learner",
+    title: "Learning by Building",
     description:
       "Learns quickly through building, experimentation, and hands-on projects, with a constant focus on improving technical skills.",
     gradient: "from-violet-500/10 to-indigo-500/10",

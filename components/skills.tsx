@@ -76,8 +76,11 @@ export default function Skills() {
 
             return (
               <FadeIn key={cat.category} delay={0.1 + index * 0.1}>
-                <div
-                  className={`group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-5 md:p-6 transition-all duration-300 ${meta.glow} hover:-translate-y-1 h-full`}
+                <motion.div
+                  whileHover={{ y: -4, scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className={`group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-5 md:p-6 transition-shadow duration-300 ${meta.glow} h-full`}
                 >
                   {/* Card gradient tint */}
                   <div
@@ -105,7 +108,7 @@ export default function Skills() {
                       </span>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               </FadeIn>
             );
           })}
