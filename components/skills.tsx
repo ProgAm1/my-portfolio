@@ -9,17 +9,17 @@ import { FadeIn, useIsMobile } from "@/components/animations";
 const categoryMeta: Record<string, { icon: string; gradient: string; glow: string }> = {
   Languages: {
     icon: "⌨️",
-    gradient: "from-violet-500/20 to-indigo-500/10",
+    gradient: "from-violet-500/10 to-indigo-500/10",
     glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
   Frontend: {
     icon: "🎨",
-    gradient: "from-violet-500/20 to-indigo-500/10",
+    gradient: "from-violet-500/10 to-indigo-500/10",
     glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
   "Backend & Tools": {
     icon: "⚙️",
-    gradient: "from-violet-500/20 to-indigo-500/10",
+    gradient: "from-violet-500/10 to-indigo-500/10",
     glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
 };
@@ -69,46 +69,49 @@ export default function Skills() {
           {skillCategories.map((cat, index) => {
             const meta = categoryMeta[cat.category] ?? {
               icon: "🔧",
-              gradient: "from-slate-500/20 to-slate-500/10",
+              gradient: "from-slate-500/10 to-slate-500/10",
               glow: "",
             };
             const pill = pillColor[cat.category] ?? "";
 
             return (
-              <FadeIn key={cat.category} delay={0.1 + index * 0.1}>
-                <motion.div
-                  whileHover={{ y: -4, scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  className={`group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-5 md:p-6 transition-shadow duration-300 ${meta.glow} h-full`}
+              <FadeIn key={cat.category} delay={0.15 + index * 0.1}>
+                <div
+                  className={`group relative overflow-hidden rounded-2xl border border-white/5 bg-white/[0.03] p-5 md:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/30 ${meta.glow} h-full`}
                 >
-                  {/* Card gradient tint */}
+                  {/* Gradient background */}
                   <div
-                    className={`pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br ${meta.gradient} opacity-100 md:opacity-0 transition-opacity duration-300 md:group-hover:opacity-100`}
+                    className={`pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br ${meta.gradient} opacity-50 transition-opacity duration-300 group-hover:opacity-80`}
                   />
 
-                  {/* Header */}
-                  <div className="mb-4 md:mb-5 flex items-center gap-3">
-                    <span className="flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-xl bg-white/5 text-base md:text-lg border border-white/8">
-                      {meta.icon}
-                    </span>
-                    <h3 className="text-xs md:text-sm font-semibold uppercase tracking-widest text-slate-300">
-                      {cat.category}
-                    </h3>
-                  </div>
+                  {/* Soft light overlay */}
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-white/[0.02] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-                  {/* Pills */}
-                  <div className="flex flex-wrap gap-2">
-                    {cat.skills.map((skill) => (
-                      <span
-                        key={skill.name}
-                        className={`cursor-default rounded-lg border border-white/8 bg-white/[0.04] px-2.5 py-1 md:px-3 md:py-1.5 text-xs md:text-sm font-medium text-slate-400 transition-all duration-200 ${pill}`}
-                      >
-                        {skill.name}
-                      </span>
-                    ))}
+                  {/* Content */}
+                  <div className="relative flex flex-col h-full">
+                    {/* Header */}
+                    <div className="mb-4 md:mb-5 flex items-center gap-4">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-lg transition-colors group-hover:bg-violet-500/20">
+                        {meta.icon}
+                      </div>
+                      <h3 className="text-sm md:text-base font-semibold text-white">
+                        {cat.category}
+                      </h3>
+                    </div>
+
+                    {/* Pills */}
+                    <div className="flex flex-wrap gap-2">
+                      {cat.skills.map((skill) => (
+                        <span
+                          key={skill.name}
+                          className={`cursor-default rounded-lg border border-white/8 bg-white/[0.04] px-2.5 py-1 md:px-3 md:py-1.5 text-xs md:text-sm font-medium text-slate-400 transition-all duration-200 ${pill}`}
+                        >
+                          {skill.name}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </motion.div>
+                </div>
               </FadeIn>
             );
           })}
