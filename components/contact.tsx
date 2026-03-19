@@ -20,7 +20,7 @@ export default function Contact() {
     e.preventDefault();
     setStatus("sending");
     setErrorMessage("");
-    
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -94,8 +94,8 @@ export default function Contact() {
                 {
                   icon: Linkedin,
                   label: "LinkedIn",
-                  value: "linkedin.com/in/ammarbabaset",
-                  href: "https://linkedin.com/in/ammarbabaset",
+                  value: "linkedin.com/in/ammarbabasit",
+                  href: "https://linkedin.com/in/ammarbabasit",
                 },
               ].map(({ icon: Icon, label, value, href }, index) => (
                 <FadeIn key={label} delay={0.1 + index * 0.1}>

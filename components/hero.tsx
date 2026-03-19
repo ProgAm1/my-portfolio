@@ -8,7 +8,7 @@ import { useIsMobile } from "@/components/animations";
 const socials = [
   { icon: Twitter, href: "https://x.com/xlihi0", label: "X / Twitter" },
   { icon: Github, href: "https://github.com/ProgAm1", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/ammarbabaset", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/ammarbabasit", label: "LinkedIn" },
   { icon: Mail, href: "mailto:babaset99@gmail.com", label: "Email" },
 ];
 
