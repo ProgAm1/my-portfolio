@@ -65,9 +65,10 @@ export default function Contact() {
           <div className="space-y-6 md:space-y-8">
             <FadeIn delay={0.05}>
               <p className="text-slate-400 leading-relaxed">
-                I&apos;m currently looking for new opportunities and internships. Whether
-                you have a question, a project idea, or just want to connect — feel free
-                to reach out.
+                I&apos;m currently open to internships, entry-level software roles,
+                and technical collaborations. If you have an opportunity, project,
+                or team in mind, I’d be glad to connect.
+
               </p>
             </FadeIn>
 

@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { Github, ExternalLink } from "lucide-react";
 import { projects } from "@/data/projects";
@@ -34,7 +32,6 @@ export default function Projects() {
                     alt={project.title}
                     fill
                     className="object-cover opacity-70 transition-all duration-500 group-hover:scale-105 group-hover:opacity-90"
-                    onError={() => { }} // gracefully ignore missing placeholder images
                   />
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-transparent to-transparent" />

@@ -2,6 +2,7 @@
 
 import { Download, FileText, ExternalLink, Eye } from "lucide-react";
 import SectionTitle from "@/components/section-title";
+import { FadeIn } from "@/components/animations";
 
 const CV_PATH = "/CV/Ammar_Yaser_Babaset_Software_Intern.pdf";
 
@@ -13,15 +14,18 @@ export default function CV() {
                 <div className="absolute left-1/2 top-1/2 h-[350px] w-[450px] md:h-[500px] md:w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-700/10 blur-[80px] md:blur-[130px]" />
             </div>
 
-            <div className="mx-auto max-w-4xl ">
-                <SectionTitle
-                    label="Resume"
-                    title="My CV"
-                    subtitle="A quick look at my background, skills, and experience."
-                    subtitleClassName="-translate-y-2 lg:-translate-y-3"
-                />
+            <div className="mx-auto max-w-4xl">
+                <FadeIn>
+                    <SectionTitle
+                        label="Resume"
+                        title="My CV"
+                        subtitle="A quick look at my background, skills, and experience."
+                        subtitleClassName="-translate-y-2 lg:-translate-y-3"
+                    />
+                </FadeIn>
 
                 {/* ── CV Card ── */}
+                <FadeIn delay={0.15}>
                 <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_0_80px_rgba(139,92,246,0.10)] backdrop-blur-sm">
 
                     {/* Top bar — window chrome */}
@@ -105,6 +109,7 @@ export default function CV() {
                         </a>
                     </div>
                 </div>
+                </FadeIn>
             </div>
         </section>
     );

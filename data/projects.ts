@@ -24,7 +24,7 @@ export const projects: Project[] = [
     title: "kaust-tdp43-chr20-rnaseq-study",
     description:
       `A bioinformatics analysis project focused on differential gene expression
-      on chromosome 20, comparing normal and TDB protein samples. Built
+      on chromosome 20, comparing normal and TDP-43 protein samples. Built
       reproducible workflows in Python and R to identify significant biological
       patterns and validate results using established analytical methods.`,
     tags: ["Python", "R", "Bioinformatics", "Differential Gene Expression"],
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     id: 3,
     title: "SlideMind",
     description:
-      "Intelligent flashcard generator built using Java, using Claude API integration to convert raw study content into organized, review-ready learning assets.",
+      "A Java-based study assistant that uses Claude API to turn raw learning material into structured, review-ready flashcards.",
     tags: ["Java", "Claude API", "REST API"],
     image: "/images/SlideMind.png",
     github: "https://github.com/ProgAm1/Slide-Mind-Project",

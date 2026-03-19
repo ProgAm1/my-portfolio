@@ -1,24 +1,25 @@
 "use client";
-
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { skillCategories } from "@/data/skills";
 import SectionTitle from "@/components/section-title";
 import { FadeIn, useIsMobile } from "@/components/animations";
+import { FileCode2, MonitorSmartphone, Wrench, type LucideIcon } from "lucide-react";
 
-const categoryMeta: Record<string, { icon: string; gradient: string; glow: string }> = {
+
+const categoryMeta: Record<string, { icon: LucideIcon; gradient: string; glow: string }> = {
   Languages: {
-    icon: "⌨️",
+    icon: FileCode2,
     gradient: "from-violet-500/10 to-indigo-500/10",
     glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
   Frontend: {
-    icon: "🎨",
+    icon: MonitorSmartphone,
     gradient: "from-violet-500/10 to-indigo-500/10",
     glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
   "Backend & Tools": {
-    icon: "⚙️",
+    icon: Wrench,
     gradient: "from-violet-500/10 to-indigo-500/10",
     glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
@@ -48,11 +49,11 @@ export default function Skills() {
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           style={{ y: y1 }}
-          className="absolute left-0 top-1/2 -translate-y-1/2 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-violet-700/8 blur-[80px] md:blur-[120px] transition-transform"
+          className="absolute left-0 top-1/2 -translate-y-1/2 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-violet-700/8 blur-[80px] md:blur-[120px]"
         />
         <motion.div
           style={{ y: y2 }}
-          className="absolute right-0 bottom-0 h-[200px] w-[250px] md:h-[300px] md:w-[400px] rounded-full bg-violet-700/8 blur-[60px] md:blur-[100px] transition-transform"
+          className="absolute right-0 bottom-0 h-[200px] w-[250px] md:h-[300px] md:w-[400px] rounded-full bg-violet-700/8 blur-[60px] md:blur-[100px]"
         />
       </div>
 
@@ -92,7 +93,7 @@ export default function Skills() {
                     {/* Header */}
                     <div className="mb-4 md:mb-5 flex items-center gap-4">
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-lg transition-colors group-hover:bg-violet-500/20">
-                        {meta.icon}
+                        {(() => { const Icon = meta.icon; return <Icon size={20} className="text-violet-400" />; })()}
                       </div>
                       <h3 className="text-sm md:text-base font-semibold text-white">
                         {cat.category}

@@ -156,3 +156,19 @@
     background: oklch(0.55 0.2 290);
   }
 }
+
+/* ─── Respect prefers-reduced-motion at the CSS layer ─── */
+/* Framer Motion handles this via useReducedMotion. This is the CSS fallback
+   for any animations not controlled by JS (e.g. animate-pulse, animate-bounce,
+   animate-spin inside Tailwind). Transitions are kept at 0.01ms instead of
+   0s so that state-change classes still apply properly in Safari. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
