@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Send, Mail, Github, Linkedin, Twitter } from "lucide-react";
 import SectionTitle from "@/components/section-title";
 import { FadeIn } from "@/components/animations";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  // Honeypot stored in a ref — uncontrolled, so React state (and autofill) can't pollute it
+  const honeypotRef = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -27,7 +29,11 @@ export default function Contact() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          // Read the honeypot directly from the DOM; never from React state
+          _hp: honeypotRef.current?.value ?? "",
+        }),
       });
 
       const data = await response.json();
@@ -56,7 +62,7 @@ export default function Contact() {
           <SectionTitle
             label="Contact"
             title="Let's Work Together"
-            subtitle="Have a project in mind or just want to say hello? My inbox is always open."
+            subtitle="Have a project in mind? My inbox is always open."
           />
         </FadeIn>
 
@@ -124,6 +130,18 @@ export default function Contact() {
           {/* Right — form */}
           <FadeIn delay={0.15}>
             <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Honeypot: off-screen, uncontrolled, named _hp so browsers don't autofill it */}
+              <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+                <label htmlFor="_hp">Leave this empty</label>
+                <input
+                  ref={honeypotRef}
+                  id="_hp"
+                  name="_hp"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="new-password"
+                />
+              </div>
               {status === "sent" ? (
                 <div className="rounded-2xl border border-violet-500/30 bg-violet-500/10 p-8 text-center">
                   <p className="text-lg font-semibold text-violet-300">
@@ -223,7 +241,7 @@ export default function Contact() {
 
       {/* Footer */}
       <p className="mt-24 text-center text-xs text-slate-600">
-        © {new Date().getFullYear()} Ammar Babaset · Built with Next.js & Tailwind CSS
+        © {new Date().getFullYear()} Ammar Babasit · Built with Next.js & Tailwind CSS
       </p>
     </section>
   );

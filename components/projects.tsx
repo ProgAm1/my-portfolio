@@ -76,7 +76,7 @@ export default function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${project.title} Live Demo`}
-                        className="flex items-center gap-1.5 text-xs text-violet-400 hover:text-violet-300 transition-colors"
+                        className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors"
                       >
                         <ExternalLink size={14} />
                         Live Demo

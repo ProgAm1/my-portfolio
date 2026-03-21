@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 import ScrollProgress from "@/components/scroll-progress";
 
@@ -19,9 +20,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Ammar Babaset — Software Engineering Student",
+  title: "Ammar Babasit — Software Engineering Student",
   description:
-    "Portfolio of Ammar Babaset, a software engineering student building clean, performant web applications and exploring full-stack development.",
+    "Portfolio of Ammar Babasit, a software engineering student building clean, performant web applications and exploring full-stack development.",
 };
 
 export default function RootLayout({

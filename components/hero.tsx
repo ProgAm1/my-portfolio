@@ -69,7 +69,7 @@ export default function Hero() {
         <motion.h1 variants={item} className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] md:leading-tight">
           Hi, I&apos;m{" "}
           <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent pb-1 block sm:inline mt-1 sm:mt-0">
-            Ammar Babaset
+            Ammar Babasit
           </span>
         </motion.h1>
 

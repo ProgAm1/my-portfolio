@@ -48,26 +48,26 @@ export default function About() {
               Background
             </h3>
             <p>
-              I&apos;m <span className="text-white font-semibold">Ammar Babaset</span>, a
-              Software Engineering student at the University of Jeddah with a strong interest
-              in building practical software and growing through hands-on work.
+              I&apos;m <span className="text-white font-semibold">Ammar Babaset</span>,
+              a Software Engineering student at the University of Jeddah with a strong
+              interest in building practical software.
             </p>
 
             <h3 className="text-base md:text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
               Interests
             </h3>
             <p>
-              My main interest is in full-stack development and building applications that solve
-              real problems. I also enjoy exploring areas like computer vision and bioinformatics,
-              which have helped broaden my technical perspective.
+              I’m mainly interested in full-stack development and building applications
+              that solve real problems. I also enjoy exploring areas like computer vision and bioinformatics.
             </p>
 
             <h3 className="text-base md:text-lg font-semibold tracking-tight text-violet-300 sm:text-xl">
               Current Focus
             </h3>
             <p>
-              Right now, my focus is on improving through continuous building, learning quickly,
-              and gaining real experience through projects, collaboration, and internship opportunities.
+              Right now, I’m focused on strengthening my skills through continuous building,
+              practical learning, and real-world experience through projects, collaboration,
+              and internship opportunities.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">

@@ -23,7 +23,8 @@ export const skillCategories: SkillCategory[] = [
   {
     category: "Frontend",
     skills: [
-      { name: "HTML / CSS" },
+      { name: "HTML" },
+      { name: "CSS" },
       { name: "React" },
       { name: "Next.js" },
       { name: "Tailwind CSS" },
@@ -32,8 +33,10 @@ export const skillCategories: SkillCategory[] = [
   {
     category: "Backend & Tools",
     skills: [
-      { name: "Node.js" },
       { name: "Git / GitHub" },
+      { name: "Node.js" },
+      { name: "Flask" },
+      { name: "REST APIs" },
     ],
   },
 ];
