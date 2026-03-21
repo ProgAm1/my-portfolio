@@ -37,6 +37,7 @@ export default function RootLayout({
       >
         <ScrollProgress />
         {children}
+        <Analytics />
       </body>
     </html>
   );
