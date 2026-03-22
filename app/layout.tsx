@@ -61,7 +61,7 @@ export const metadata: Metadata = {
 
   // ── Twitter / X Card ──
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Ammar Babaset | Software Engineering Portfolio",
     description:
       "Software Engineering student showcasing full-stack, computer vision, and bioinformatics projects.",
