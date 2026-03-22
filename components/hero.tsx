@@ -3,7 +3,8 @@
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import { useRef } from "react";
-import { useIsMobile } from "@/components/animations";
+import Image from "next/image";
+import { FadeIn, useIsMobile } from "@/components/animations";
 
 const socials = [
   { icon: Twitter, href: "https://x.com/xlihi0", label: "X / Twitter" },
@@ -39,7 +40,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={ref}
-      className="relative flex min-h-[100dvh] flex-col items-center justify-center px-6 text-center"
+      className="relative flex min-h-[100dvh] flex-col items-center justify-center px-6"
     >
       {/* Ambient background blobs with Parallax */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -53,67 +54,125 @@ export default function Hero() {
         />
       </div>
 
-      <motion.div
-        className="flex flex-col items-center"
-        variants={container}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Badge */}
-        <motion.div variants={item} className="mb-6 md:mb-8 inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1.5 md:px-4 md:py-1.5 text-[11px] md:text-xs font-medium text-violet-300">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-400" />
-          Available for opportunities
-        </motion.div>
+      {/*
+        Two-column layout:
+        - DOM order: [Text, Portrait]
+        - Mobile (flex-col-reverse): portrait appears visually ABOVE text
+        - Desktop (lg:flex-row): text on left, portrait on right
+      */}
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-center lg:justify-between gap-10 lg:gap-16 w-full max-w-6xl">
 
-        {/* Heading */}
-        <motion.h1 variants={item} className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] md:leading-tight">
-          Hi, I&apos;m{" "}
-          <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent pb-1 block sm:inline mt-1 sm:mt-0">
-            Ammar Babasit
-          </span>
-        </motion.h1>
-
-        <motion.p variants={item} className="mt-4 md:mt-6 text-base font-medium text-slate-400 sm:text-lg md:text-xl">
-          Software Engineering Student & Full-Stack Developer
-        </motion.p>
-
-        <motion.p variants={item} className="mt-4 md:mt-6 max-w-2xl text-sm md:text-base leading-relaxed text-slate-500 px-2 sm:px-4 md:px-0">
-          Software Engineering student focused on full-stack web development, backend systems, and project-driven problem solving.
-          I build practical applications with clean architecture and a strong focus on usability, performance, and real-world impact.
-        </motion.p>
-
-        {/* CTA buttons */}
-        <motion.div variants={item} className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 w-full sm:w-auto px-4 sm:px-0">
-          <a
-            href="#projects"
-            className="w-full sm:w-auto text-center rounded-xl sm:rounded-full bg-violet-600 px-6 py-3.5 md:py-3 text-sm font-semibold text-white transition-all hover:bg-violet-500 hover:shadow-[0_0_24px_rgba(139,92,246,0.5)]"
+        {/* ── Left: Text Content ── */}
+        <motion.div
+          className="flex flex-col items-center lg:items-start text-center lg:text-left"
+          variants={container}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Badge */}
+          <motion.div
+            variants={item}
+            className="mb-6 md:mb-8 inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1.5 md:px-4 md:py-1.5 text-[11px] md:text-xs font-medium text-violet-300"
           >
-            View My Work
-          </a>
-          <a
-            href="#contact"
-            className="w-full sm:w-auto text-center rounded-xl sm:rounded-full border border-white/10 bg-white/5 px-6 py-3.5 md:py-3 text-sm font-semibold text-slate-300 backdrop-blur-sm transition-all hover:border-violet-500/50 hover:bg-white/10 hover:text-white"
-          >
-            Get In Touch
-          </a>
-        </motion.div>
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-400" />
+            Available for opportunities
+          </motion.div>
 
-        {/* Social links */}
-        <motion.div variants={item} className="mt-10 md:mt-12 flex items-center gap-4 md:gap-5">
-          {socials.map(({ icon: Icon, href, label }) => (
+          {/* Heading */}
+          <motion.h1
+            variants={item}
+            className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] md:leading-tight"
+          >
+            Hi, I&apos;m{" "}
+            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent pb-1 block sm:inline mt-1 sm:mt-0">
+              Ammar Babasit
+            </span>
+          </motion.h1>
+
+          <motion.p
+            variants={item}
+            className="mt-4 md:mt-6 text-base font-medium text-slate-400 sm:text-lg md:text-xl"
+          >
+            Software Engineering Student &amp; Full-Stack Developer
+          </motion.p>
+
+          <motion.p
+            variants={item}
+            className="mt-4 md:mt-6 max-w-xl text-sm md:text-base leading-relaxed text-slate-500"
+          >
+            Software Engineering student focused on full-stack web development, backend systems,
+            and project-driven problem solving. I build practical applications with clean
+            architecture and a strong focus on usability, performance, and real-world impact.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div
+            variants={item}
+            className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4 w-full sm:w-auto"
+          >
             <a
-              key={label}
-              href={href}
-              aria-label={label}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-12 w-12 md:h-10 md:w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition-all hover:border-violet-500/50 hover:bg-violet-500/20 hover:text-violet-300"
+              href="#projects"
+              className="w-full sm:w-auto text-center rounded-xl sm:rounded-full bg-violet-600 px-6 py-3.5 md:py-3 text-sm font-semibold text-white transition-all hover:bg-violet-500 hover:shadow-[0_0_24px_rgba(139,92,246,0.5)]"
             >
-              <Icon size={18} className="md:scale-100 scale-110" />
+              View My Work
             </a>
-          ))}
+            <a
+              href="#contact"
+              className="w-full sm:w-auto text-center rounded-xl sm:rounded-full border border-white/10 bg-white/5 px-6 py-3.5 md:py-3 text-sm font-semibold text-slate-300 backdrop-blur-sm transition-all hover:border-violet-500/50 hover:bg-white/10 hover:text-white"
+            >
+              Get In Touch
+            </a>
+          </motion.div>
+
+          {/* Social links */}
+          <motion.div variants={item} className="mt-10 md:mt-12 flex items-center gap-4 md:gap-5">
+            {socials.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 w-12 md:h-10 md:w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 transition-all hover:border-violet-500/50 hover:bg-violet-500/20 hover:text-violet-300"
+              >
+                <Icon size={18} className="md:scale-100 scale-110" />
+              </a>
+            ))}
+          </motion.div>
         </motion.div>
-      </motion.div>
+
+        {/* ── Right: Portrait Card ── */}
+        <FadeIn delay={0.35} direction="left" className="flex-shrink-0">
+          <div className="relative">
+            {/* Subtle violet glow behind the card */}
+            <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-violet-600/15 blur-[40px] -z-10" />
+
+            {/* Card */}
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_8px_40px_rgba(0,0,0,0.35),0_0_30px_rgba(139,92,246,0.10)] w-[200px] sm:w-[240px] lg:w-[280px]">
+
+              {/* Portrait image — aspect-[4/5] gives a clean portrait crop */}
+              <div className="relative aspect-[4/5]">
+                <Image
+                  src="/images/MyPhoto.png"
+                  alt="Portrait of Ammar Babasit"
+                  fill
+                  priority
+                  className="object-cover object-top"
+                />
+                {/* Gradient fade at bottom to blend into the label */}
+                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0c0c14]/95 via-[#0c0c14]/40 to-transparent" />
+              </div>
+
+              {/* Name / role label overlaid at the bottom */}
+              <div className="absolute bottom-0 inset-x-0 px-4 py-3.5">
+                <p className="text-sm font-semibold text-white leading-snug">Ammar Babasit</p>
+                <p className="text-[11px] text-slate-400 mt-0.5">Software Engineering Student</p>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
+      </div>
 
       {/* Scroll cue */}
       <a

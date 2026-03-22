@@ -20,10 +20,63 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Ammar Babasit — Software Engineering Student",
+  // ── Base URL (Next.js resolves all relative image/URL metadata against this) ──
+  metadataBase: new URL("https://ammarbabaset.dev"),
+
+  // ── Title ──
+  title: {
+    default: "Ammar Babaset | Software Engineering Portfolio",
+    template: "%s | Ammar Babaset",
+  },
+
+  // ── Description & Keywords ──
   description:
-    "Portfolio of Ammar Babasit, a software engineering student building clean, performant web applications and exploring full-stack development.",
+    "Software Engineering student showcasing full-stack, computer vision, and bioinformatics projects.",
+  keywords: [
+    "Ammar Babaset",
+    "software engineering",
+    "portfolio",
+    "full-stack developer",
+    "Next.js",
+    "React",
+    "computer vision",
+    "bioinformatics",
+    "web development",
+  ],
+
+  // ── Canonical URL ──
+  alternates: {
+    canonical: "https://ammarbabaset.dev",
+  },
+
+  // ── Open Graph (WhatsApp, LinkedIn, Discord, Facebook, iMessage) ──
+  openGraph: {
+    type: "website",
+    url: "https://ammarbabaset.dev",
+    siteName: "Ammar Babaset Portfolio",
+    title: "Ammar Babaset | Software Engineering Portfolio",
+    description:
+      "Software Engineering student showcasing full-stack, computer vision, and bioinformatics projects.",
+    images: [
+      {
+        url: "/images/MyPhoto.png",
+        width: 1200,
+        height: 630,
+        alt: "Ammar Babaset — Software Engineering Portfolio",
+      },
+    ],
+  },
+
+  // ── Twitter / X Card ──
+  twitter: {
+    card: "summary_large_image",
+    title: "Ammar Babaset | Software Engineering Portfolio",
+    description:
+      "Software Engineering student showcasing full-stack, computer vision, and bioinformatics projects.",
+    images: ["/images/MyPhoto.png"],
+  },
 };
+
 
 export default function RootLayout({
   children,
@@ -37,6 +90,7 @@ export default function RootLayout({
       >
         <ScrollProgress />
         {children}
+        <Analytics />
       </body>
     </html>
   );
