@@ -65,7 +65,6 @@ export const metadata: Metadata = {
     title: "Ammar Babaset | Software Engineering Portfolio",
     description:
       "Software Engineering student showcasing full-stack, computer vision, and bioinformatics projects.",
-    images: ["/twitter-image.png"],
   },
 };
 
