@@ -52,18 +52,15 @@ export default function Hero() {
 
         {/* ── Portrait card ── */}
         <div className="col-start-1 row-start-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center mt-5 lg:mt-0 flex justify-center flex-shrink-0">
-          {/* STABLE OUTER WRAPPER: Exposes rigid structural dimensions to CSS Grid immediately on paint */}
           <div className="relative w-[200px] sm:w-[240px] lg:w-[280px] aspect-[4/5]">
-            {/* INNER ANIMATING WRAPPER: Handles entrance safely decoupled from layout calculation */}
             <div className="absolute inset-0 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500 fill-mode-both">
               <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-violet-600/15 blur-[40px] -z-10" />
               <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_8px_40px_rgba(0,0,0,0.35),0_0_30px_rgba(139,92,246,0.10)]">
                 <Image
-                  src="/images/MyPhoto.webp"
+                  src="/images/MyPhoto.jpg"
                   alt="Portrait of Ammar Babasit"
                   fill
                   priority
-                  sizes="(max-width: 640px) 200px, (max-width: 1024px) 240px, 280px"
                   className="object-cover object-top"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0c0c14]/95 via-[#0c0c14]/40 to-transparent" />
