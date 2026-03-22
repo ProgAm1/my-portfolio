@@ -21,7 +21,7 @@ A personal portfolio website built with Next.js, TypeScript, and Tailwind CSS to
 - CV access
 
 ## Author
-Ammar Yaser Babaset
+Ammar Yasir Babasit
 
 - GitHub: [ProgAm1](https://github.com/ProgAm1)
 - LinkedIn: [ammarbabaset](https://www.linkedin.com/in/ammarbabaset)

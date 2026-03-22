@@ -1,5 +1,3 @@
-"use client";
-
 import { Download, FileText, ExternalLink, Eye } from "lucide-react";
 import SectionTitle from "@/components/section-title";
 import { FadeIn } from "@/components/animations";

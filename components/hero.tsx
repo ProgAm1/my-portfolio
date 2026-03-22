@@ -101,7 +101,7 @@ export default function Hero() {
           {/* Intro paragraph */}
           <motion.p
             variants={item}
-            className="mt-4 md:mt-6 max-w-xl text-sm md:text-base leading-relaxed text-slate-500"
+            className="mt-4 md:mt-6 max-w-xl text-sm md:text-base leading-relaxed text-slate-400"
           >
             Software Engineering student focused on full-stack web development, backend systems,
             and project-driven problem solving. I build practical applications with clean
@@ -124,10 +124,11 @@ export default function Hero() {
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_8px_40px_rgba(0,0,0,0.35),0_0_30px_rgba(139,92,246,0.10)] w-[200px] sm:w-[240px] lg:w-[280px]">
               <div className="relative aspect-[4/5]">
                 <Image
-                  src="/images/MyPhoto.png"
+                  src="/images/MyPhoto.webp"
                   alt="Portrait of Ammar Babasit"
                   fill
                   priority
+                  sizes="(max-width: 640px) 200px, (max-width: 1024px) 240px, 280px"
                   className="object-cover object-top"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0c0c14]/95 via-[#0c0c14]/40 to-transparent" />
@@ -189,7 +190,7 @@ export default function Hero() {
       <a
         href="#about"
         aria-label="Scroll to about"
-        className="absolute bottom-10 animate-bounce text-slate-600 hover:text-slate-400 transition-colors"
+        className="absolute bottom-10 animate-bounce text-slate-500 hover:text-slate-400 transition-colors"
       >
         <ArrowDown size={22} />
       </a>

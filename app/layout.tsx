@@ -21,7 +21,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   // ── Base URL (Next.js resolves all relative image/URL metadata against this) ──
-  metadataBase: new URL("https://ammarbabasit.dev"),
+  metadataBase: new URL("https://ammarbabaset.dev"),
 
   // ── Title ──
   title: {
@@ -47,13 +47,13 @@ export const metadata: Metadata = {
 
   // ── Canonical URL ──
   alternates: {
-    canonical: "https://ammarbabasit.dev",
+    canonical: "https://ammarbabaset.dev",
   },
 
   // ── Open Graph (WhatsApp, LinkedIn, Discord, Facebook, iMessage) ──
   openGraph: {
     type: "website",
-    url: "https://ammarbabasit.dev",
+    url: "https://ammarbabaset.dev",
     siteName: "Ammar Babasit Portfolio",
     title: "Ammar Babasit | Software Engineering Portfolio",
     description:

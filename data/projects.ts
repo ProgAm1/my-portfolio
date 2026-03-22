@@ -15,7 +15,7 @@ export const projects: Project[] = [
     description:
       "Developed a computer vision photo booth that captures images through hand gestures using Python, OpenCV, and MediaPipe.",
     tags: ["Python", "Computer Vision", "Flask", "MediaPipe", "OpenCV"],
-    image: "/images/BracketClick-Page.png",
+    image: "/images/BracketClick-Page.webp",
     github: "https://github.com/ProgAm1/Bracketclick",
     demo: "#",
   },
@@ -27,7 +27,7 @@ export const projects: Project[] = [
       chromosome 21 gene expression using Python and R, applying a complete 
       workflow from preprocessing to differential expression analysis and biological interpretation.`,
     tags: ["Python", "R", "Bioinformatics", "Differential Gene Expression"],
-    image: "/images/kaust-tdp43-chr20-rnaseq-study.png",
+    image: "/images/kaust-tdp43-chr20-rnaseq-study.webp",
     github: "https://github.com/ProgAm1/kaust-tdp43-chr20-rnaseq-study",
     demo: "https://www.researchsquare.com/article/rs-9077001/v1",
   },
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     description:
       "Built a Java-based study tool that converts presentation content into flashcards, helping simplify revision workflows and making lecture material easier to review in a more interactive way.",
     tags: ["Java", "Claude API", "REST API"],
-    image: "/images/SlideMind.png",
+    image: "/images/SlideMind.webp",
     github: "https://github.com/ProgAm1/Slide-Mind-Project",
     demo: "#",
   },

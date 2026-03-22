@@ -246,7 +246,7 @@ export default function Contact() {
       </div>
 
       {/* Footer */}
-      <p className="mt-24 text-center text-xs text-slate-600">
+      <p className="mt-24 text-center text-xs text-slate-500">
         © {new Date().getFullYear()} Ammar Babasit · Built with Next.js & Tailwind CSS
       </p>
     </section>

@@ -31,6 +31,7 @@ export default function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                     className="object-cover opacity-70 transition-all duration-500 group-hover:scale-105 group-hover:opacity-90"
                   />
                   {/* Gradient overlay */}

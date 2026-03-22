@@ -1,12 +1,10 @@
-"use client";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { skillCategories } from "@/data/skills";
 import SectionTitle from "@/components/section-title";
-import { FadeIn, useIsMobile } from "@/components/animations";
+import { FadeIn } from "@/components/animations";
+import SkillsBackground from "@/components/skills-background";
 import { FileCode2, MonitorSmartphone, Wrench, type LucideIcon } from "lucide-react";
 
-// All categories share the same pill hover style — no map needed
+// Single pill hover class — all categories share the same colour, no map needed
 const pillHover = "hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-violet-300";
 
 const categoryMeta: Record<string, { icon: LucideIcon; gradient: string; glow: string }> = {
@@ -28,30 +26,10 @@ const categoryMeta: Record<string, { icon: LucideIcon; gradient: string; glow: s
 };
 
 export default function Skills() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const isMobile = useIsMobile();
-
-  const y1 = useTransform(scrollYProgress, [0, 1], ["-20%", isMobile ? "-20%" : "20%"]);
-  const y2 = useTransform(scrollYProgress, [0, 1], ["20%", isMobile ? "20%" : "-20%"]);
-
   return (
-    <section id="skills" ref={ref} className="relative py-20 md:py-28 px-4 sm:px-6">
-      {/* Background accents */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <motion.div
-          style={{ y: y1 }}
-          className="absolute left-0 top-1/2 -translate-y-1/2 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-violet-700/[0.08] blur-[80px] md:blur-[120px]"
-        />
-        <motion.div
-          style={{ y: y2 }}
-          className="absolute right-0 bottom-0 h-[200px] w-[250px] md:h-[300px] md:w-[400px] rounded-full bg-violet-700/[0.08] blur-[60px] md:blur-[100px]"
-        />
-      </div>
+    <section id="skills" className="relative py-20 md:py-28 px-4 sm:px-6">
+      {/* Background accents via isolated Client Component */}
+      <SkillsBackground />
 
       <div className="mx-auto max-w-6xl">
         <FadeIn>
@@ -64,7 +42,7 @@ export default function Skills() {
 
         <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8 md:mt-12">
           {skillCategories.map((cat, index) => {
-            // Safe fallback: Wrench is a LucideIcon, unlike the previous "🔧" string
+            // Safe fallback: Wrench is a LucideIcon
             const meta = categoryMeta[cat.category] ?? {
               icon: Wrench,
               gradient: "from-slate-500/10 to-slate-500/10",
