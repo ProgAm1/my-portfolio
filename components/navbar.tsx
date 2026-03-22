@@ -2,18 +2,23 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useActiveSection } from "@/hooks/use-active-section";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "CV", href: "#cv" },
-  { label: "Contact", href: "#contact" }
+  { label: "About", href: "#about", id: "about" },
+  { label: "Skills", href: "#skills", id: "skills" },
+  { label: "Projects", href: "#projects", id: "projects" },
+  { label: "CV", href: "#cv", id: "cv" },
+  { label: "Contact", href: "#contact", id: "contact" }
 ];
+
+// Explicitly track the #hero section so 'About' doesn't falsely dominate the top of the page.
+const sectionIds = ["hero", ...navLinks.map((l) => l.id)];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const activeSection = useActiveSection(sectionIds);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -43,10 +48,18 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-slate-400 hover:text-white transition-colors relative group"
+                className={`text-sm transition-colors relative group ${
+                  activeSection === link.id
+                    ? "text-white font-medium"
+                    : "text-slate-400 hover:text-white"
+                }`}
               >
                 {link.label}
-                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-violet-500 transition-all duration-300 group-hover:w-full" />
+                <span
+                  className={`absolute -bottom-0.5 left-0 h-px bg-violet-500 transition-all duration-300 ${
+                    activeSection === link.id ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
               </a>
             </li>
           ))}
@@ -80,7 +93,11 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="block text-base font-medium text-slate-300 hover:text-white transition-colors py-2"
+                  className={`block text-base transition-colors py-2 ${
+                    activeSection === link.id
+                      ? "text-violet-400 font-semibold"
+                      : "text-slate-300 font-medium hover:text-white"
+                  }`}
                 >
                   {link.label}
                 </a>

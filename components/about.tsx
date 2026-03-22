@@ -31,8 +31,8 @@ const highlights = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-20 md:py-28 px-4 sm:px-6">
-      <div className="mx-auto max-w-6xl">
+    <section id="about" className="relative flex flex-col justify-center min-h-[calc(100dvh-5rem)] md:min-h-[calc(100dvh-6rem)] py-20 md:py-28 px-4 sm:px-6">
+      <div className="w-full mx-auto max-w-6xl">
         <FadeIn>
           <SectionTitle
             label="About Me"

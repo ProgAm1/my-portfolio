@@ -6,13 +6,13 @@ const CV_PATH = "/CV/Ammar_Yaser_Babaset_Software_Intern.pdf";
 
 export default function CV() {
     return (
-        <section id="cv" className="relative py-20 md:py-28 px-4 sm:px-6">
+        <section id="cv" className="relative flex flex-col justify-center min-h-[calc(100dvh-5rem)] md:min-h-[calc(100dvh-6rem)] py-20 md:py-28 px-4 sm:px-6">
             {/* Background glow */}
             <div className="pointer-events-none absolute inset-0 -z-10">
                 <div className="absolute left-1/2 top-1/2 h-[350px] w-[450px] md:h-[500px] md:w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-700/10 blur-[80px] md:blur-[130px]" />
             </div>
 
-            <div className="mx-auto max-w-4xl">
+            <div className="w-full mx-auto max-w-4xl">
                 <FadeIn>
                     <SectionTitle
                         label="Resume"

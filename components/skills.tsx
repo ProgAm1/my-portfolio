@@ -27,11 +27,11 @@ const categoryMeta: Record<string, { icon: LucideIcon; gradient: string; glow: s
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative py-20 md:py-28 px-4 sm:px-6">
+    <section id="skills" className="relative flex flex-col justify-center min-h-[calc(100dvh-5rem)] md:min-h-[calc(100dvh-6rem)] py-20 md:py-28 px-4 sm:px-6">
       {/* Background accents via isolated Client Component */}
       <SkillsBackground />
 
-      <div className="mx-auto max-w-6xl">
+      <div className="w-full mx-auto max-w-6xl">
         <FadeIn>
           <SectionTitle
             label="Skills"
