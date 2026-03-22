@@ -5,6 +5,33 @@ import { Send, Mail, Github, Linkedin, Twitter } from "lucide-react";
 import SectionTitle from "@/components/section-title";
 import { FadeIn } from "@/components/animations";
 
+const contactLinks = [
+  {
+    icon: Twitter,
+    label: "X / Twitter",
+    value: "@xlihi0",
+    href: "https://x.com/xlihi0",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "babaset99@gmail.com",
+    href: "mailto:babaset99@gmail.com",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "github.com/ProgAm1",
+    href: "https://github.com/ProgAm1",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/ammarbabasit",
+    href: "https://linkedin.com/in/ammarbabasit",
+  },
+];
+
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   // Honeypot stored in a ref — uncontrolled, so React state (and autofill) can't pollute it
@@ -44,10 +71,14 @@ export default function Contact() {
 
       setStatus("sent");
       setForm({ name: "", email: "", message: "" });
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again later.";
       console.error("Form submission error:", error);
       setStatus("error");
-      setErrorMessage(error.message || "Something went wrong. Please try again later.");
+      setErrorMessage(message);
     }
   };
 
@@ -79,32 +110,7 @@ export default function Contact() {
             </FadeIn>
 
             <div className="space-y-4">
-              {[
-                {
-                  icon: Twitter,
-                  label: "X / Twitter",
-                  value: "@xlihi0",
-                  href: "https://x.com/xlihi0",
-                },
-                {
-                  icon: Mail,
-                  label: "Email",
-                  value: "babaset99@gmail.com",
-                  href: "mailto:babaset99@gmail.com",
-                },
-                {
-                  icon: Github,
-                  label: "GitHub",
-                  value: "github.com/ProgAm1",
-                  href: "https://github.com/ProgAm1",
-                },
-                {
-                  icon: Linkedin,
-                  label: "LinkedIn",
-                  value: "linkedin.com/in/ammarbabasit",
-                  href: "https://linkedin.com/in/ammarbabasit",
-                },
-              ].map(({ icon: Icon, label, value, href }, index) => (
+              {contactLinks.map(({ icon: Icon, label, value, href }, index) => (
                 <FadeIn key={label} delay={0.1 + index * 0.1}>
                   <a
                     href={href}

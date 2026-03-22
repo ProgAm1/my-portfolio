@@ -48,7 +48,7 @@ export default function About() {
               Background
             </h3>
             <p>
-              I&apos;m <span className="text-white font-semibold">Ammar Babaset</span>,
+              I&apos;m <span className="text-white font-semibold">Ammar Babasit</span>,
               a Software Engineering student at the University of Jeddah with a strong
               interest in building practical software.
             </p>

@@ -18,6 +18,12 @@ const container: Variants = {
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
+// Used for the CTA/socials block — fires after the 4 text-top items have animated
+const containerDelayed: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.55 } },
+};
+
 const item: Variants = {
   hidden: { opacity: 0, y: 22 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
@@ -54,22 +60,7 @@ export default function Hero() {
         />
       </div>
 
-      {/*
-        CSS Grid hero layout — single portrait, no duplication:
-
-        Mobile  (1-col grid, 3 rows):
-          row 1 → text-top  : badge, h1, subtitle, paragraph
-          row 2 → portrait  : centred card
-          row 3 → text-bottom: CTAs, social icons
-
-        Desktop lg+ (2-col grid):
-          col 1 row 1 → text-top
-          col 2 row 1+2 → portrait (self-centred, spans both text rows)
-          col 1 row 2 → text-bottom
-
-        The portrait is a SINGLE DOM element repositioned via grid placement
-        utilities, so there is no breakpoint discontinuity.
-      */}
+      {/* Grid: 1-col mobile (3 rows: text-top / portrait / text-bottom), 2-col desktop (portrait spans both rows on the right). */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] lg:gap-x-16 w-full max-w-6xl">
 
         {/* ── Text-top: badge → heading → subtitle → paragraph ── */}
@@ -152,7 +143,7 @@ export default function Hero() {
         {/* ── Text-bottom: CTAs → social icons ── */}
         <motion.div
           className="col-start-1 row-start-3 lg:row-start-2 mt-5 lg:mt-8 flex flex-col items-center lg:items-start text-center lg:text-left"
-          variants={container}
+          variants={containerDelayed}
           initial="hidden"
           animate="visible"
         >

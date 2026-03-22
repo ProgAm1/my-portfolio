@@ -34,7 +34,7 @@ export default function Navbar() {
           href="#"
           className="text-xl font-bold tracking-tight text-white hover:text-violet-400 transition-colors"
         >
-          AM<span className="text-violet-500"></span>
+          AM
         </a>
 
         {/* Desktop links */}
@@ -63,6 +63,7 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
           onClick={() => setMenuOpen((o) => !o)}
           className="md:hidden text-slate-400 hover:text-white transition-colors"
         >

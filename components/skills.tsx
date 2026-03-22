@@ -6,6 +6,8 @@ import SectionTitle from "@/components/section-title";
 import { FadeIn, useIsMobile } from "@/components/animations";
 import { FileCode2, MonitorSmartphone, Wrench, type LucideIcon } from "lucide-react";
 
+// All categories share the same pill hover style — no map needed
+const pillHover = "hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-violet-300";
 
 const categoryMeta: Record<string, { icon: LucideIcon; gradient: string; glow: string }> = {
   Languages: {
@@ -23,12 +25,6 @@ const categoryMeta: Record<string, { icon: LucideIcon; gradient: string; glow: s
     gradient: "from-violet-500/10 to-indigo-500/10",
     glow: "hover:shadow-[0_0_30px_rgba(139,92,246,0.12)]",
   },
-};
-
-const pillColor: Record<string, string> = {
-  Languages: "hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-violet-300",
-  Frontend: "hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-violet-300",
-  "Backend & Tools": "hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-violet-300",
 };
 
 export default function Skills() {
@@ -49,11 +45,11 @@ export default function Skills() {
       <div className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
           style={{ y: y1 }}
-          className="absolute left-0 top-1/2 -translate-y-1/2 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-violet-700/8 blur-[80px] md:blur-[120px]"
+          className="absolute left-0 top-1/2 -translate-y-1/2 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full bg-violet-700/[0.08] blur-[80px] md:blur-[120px]"
         />
         <motion.div
           style={{ y: y2 }}
-          className="absolute right-0 bottom-0 h-[200px] w-[250px] md:h-[300px] md:w-[400px] rounded-full bg-violet-700/8 blur-[60px] md:blur-[100px]"
+          className="absolute right-0 bottom-0 h-[200px] w-[250px] md:h-[300px] md:w-[400px] rounded-full bg-violet-700/[0.08] blur-[60px] md:blur-[100px]"
         />
       </div>
 
@@ -68,12 +64,13 @@ export default function Skills() {
 
         <div className="grid gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8 md:mt-12">
           {skillCategories.map((cat, index) => {
+            // Safe fallback: Wrench is a LucideIcon, unlike the previous "🔧" string
             const meta = categoryMeta[cat.category] ?? {
-              icon: "🔧",
+              icon: Wrench,
               gradient: "from-slate-500/10 to-slate-500/10",
               glow: "",
             };
-            const pill = pillColor[cat.category] ?? "";
+            const Icon = meta.icon;
 
             return (
               <FadeIn key={cat.category} delay={0.15 + index * 0.1}>
@@ -92,8 +89,8 @@ export default function Skills() {
                   <div className="relative flex flex-col h-full">
                     {/* Header */}
                     <div className="mb-4 md:mb-5 flex items-center gap-4">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-lg transition-colors group-hover:bg-violet-500/20">
-                        {(() => { const Icon = meta.icon; return <Icon size={20} className="text-violet-400" />; })()}
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 transition-colors group-hover:bg-violet-500/20">
+                        <Icon size={20} className="text-violet-400" />
                       </div>
                       <h3 className="text-sm md:text-base font-semibold text-white">
                         {cat.category}
@@ -105,7 +102,7 @@ export default function Skills() {
                       {cat.skills.map((skill) => (
                         <span
                           key={skill.name}
-                          className={`cursor-default rounded-lg border border-white/8 bg-white/[0.04] px-2.5 py-1 md:px-3 md:py-1.5 text-xs md:text-sm font-medium text-slate-400 transition-all duration-200 ${pill}`}
+                          className={`cursor-default rounded-lg border border-white/8 bg-white/[0.04] px-2.5 py-1 md:px-3 md:py-1.5 text-xs md:text-sm font-medium text-slate-400 transition-all duration-200 ${pillHover}`}
                         >
                           {skill.name}
                         </span>

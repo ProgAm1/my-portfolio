@@ -21,12 +21,12 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   // ── Base URL (Next.js resolves all relative image/URL metadata against this) ──
-  metadataBase: new URL("https://ammarbabaset.dev"),
+  metadataBase: new URL("https://ammarbabasit.dev"),
 
   // ── Title ──
   title: {
-    default: "Ammar Babaset | Software Engineering Portfolio",
-    template: "%s | Ammar Babaset",
+    default: "Ammar Babasit | Software Engineering Portfolio",
+    template: "%s | Ammar Babasit",
   },
 
   // ── Description & Keywords ──
@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     "Software Engineering student showcasing full-stack, computer vision, and bioinformatics projects.",
   keywords: [
     "Ammar Babaset",
+    "Ammar Babasit",
     "software engineering",
     "portfolio",
     "full-stack developer",
@@ -46,15 +47,15 @@ export const metadata: Metadata = {
 
   // ── Canonical URL ──
   alternates: {
-    canonical: "https://ammarbabaset.dev",
+    canonical: "https://ammarbabasit.dev",
   },
 
   // ── Open Graph (WhatsApp, LinkedIn, Discord, Facebook, iMessage) ──
   openGraph: {
     type: "website",
-    url: "https://ammarbabaset.dev",
-    siteName: "Ammar Babaset Portfolio",
-    title: "Ammar Babaset | Software Engineering Portfolio",
+    url: "https://ammarbabasit.dev",
+    siteName: "Ammar Babasit Portfolio",
+    title: "Ammar Babasit | Software Engineering Portfolio",
     description:
       "Software Engineering student showcasing full-stack, computer vision, and bioinformatics projects.",
   },
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
   // ── Twitter / X Card ──
   twitter: {
     card: "summary_large_image",
-    title: "Ammar Babaset | Software Engineering Portfolio",
+    title: "Ammar Babasit | Software Engineering Portfolio",
     description:
       "Software Engineering student showcasing full-stack, computer vision, and bioinformatics projects.",
   },
