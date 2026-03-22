@@ -40,7 +40,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={ref}
-      className="relative flex min-h-[100dvh] flex-col items-center justify-center px-6"
+      className="relative flex min-h-[100dvh] flex-col items-center justify-center px-6 pt-24 lg:pt-0"
     >
       {/* Ambient background blobs with Parallax */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -55,16 +55,26 @@ export default function Hero() {
       </div>
 
       {/*
-        Two-column layout:
-        - DOM order: [Text, Portrait]
-        - Mobile (flex-col-reverse): portrait appears visually ABOVE text
-        - Desktop (lg:flex-row): text on left, portrait on right
-      */}
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-center lg:justify-between gap-10 lg:gap-16 w-full max-w-6xl">
+        CSS Grid hero layout — single portrait, no duplication:
 
-        {/* ── Left: Text Content ── */}
+        Mobile  (1-col grid, 3 rows):
+          row 1 → text-top  : badge, h1, subtitle, paragraph
+          row 2 → portrait  : centred card
+          row 3 → text-bottom: CTAs, social icons
+
+        Desktop lg+ (2-col grid):
+          col 1 row 1 → text-top
+          col 2 row 1+2 → portrait (self-centred, spans both text rows)
+          col 1 row 2 → text-bottom
+
+        The portrait is a SINGLE DOM element repositioned via grid placement
+        utilities, so there is no breakpoint discontinuity.
+      */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] lg:gap-x-16 w-full max-w-6xl">
+
+        {/* ── Text-top: badge → heading → subtitle → paragraph ── */}
         <motion.div
-          className="flex flex-col items-center lg:items-start text-center lg:text-left"
+          className="col-start-1 row-start-1 flex flex-col items-center lg:items-start text-center lg:text-left"
           variants={container}
           initial="hidden"
           animate="visible"
@@ -89,6 +99,7 @@ export default function Hero() {
             </span>
           </motion.h1>
 
+          {/* Subtitle */}
           <motion.p
             variants={item}
             className="mt-4 md:mt-6 text-base font-medium text-slate-400 sm:text-lg md:text-xl"
@@ -96,6 +107,7 @@ export default function Hero() {
             Software Engineering Student &amp; Full-Stack Developer
           </motion.p>
 
+          {/* Intro paragraph */}
           <motion.p
             variants={item}
             className="mt-4 md:mt-6 max-w-xl text-sm md:text-base leading-relaxed text-slate-500"
@@ -104,11 +116,50 @@ export default function Hero() {
             and project-driven problem solving. I build practical applications with clean
             architecture and a strong focus on usability, performance, and real-world impact.
           </motion.p>
+        </motion.div>
 
+        {/*
+          ── Portrait card — SINGLE instance, repositioned by grid ──
+          Mobile  : col 1, row 2  (between text-top and text-bottom)
+          Desktop : col 2, row 1–2  (right column, vertically centred)
+        */}
+        <FadeIn
+          delay={0.35}
+          direction="up"
+          className="col-start-1 row-start-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:self-center mt-5 lg:mt-0 flex justify-center flex-shrink-0"
+        >
+          <div className="relative">
+            <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-violet-600/15 blur-[40px] -z-10" />
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_8px_40px_rgba(0,0,0,0.35),0_0_30px_rgba(139,92,246,0.10)] w-[200px] sm:w-[240px] lg:w-[280px]">
+              <div className="relative aspect-[4/5]">
+                <Image
+                  src="/images/MyPhoto.png"
+                  alt="Portrait of Ammar Babasit"
+                  fill
+                  priority
+                  className="object-cover object-top"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0c0c14]/95 via-[#0c0c14]/40 to-transparent" />
+              </div>
+              <div className="absolute bottom-0 inset-x-0 px-4 py-3.5">
+                <p className="text-sm font-semibold text-white leading-snug">Ammar Babasit</p>
+                <p className="text-[11px] text-slate-400 mt-0.5">Software Engineering Student</p>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* ── Text-bottom: CTAs → social icons ── */}
+        <motion.div
+          className="col-start-1 row-start-3 lg:row-start-2 mt-5 lg:mt-8 flex flex-col items-center lg:items-start text-center lg:text-left"
+          variants={container}
+          initial="hidden"
+          animate="visible"
+        >
           {/* CTA buttons */}
           <motion.div
             variants={item}
-            className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 md:gap-4 w-full sm:w-auto"
           >
             <a
               href="#projects"
@@ -124,8 +175,8 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          {/* Social links */}
-          <motion.div variants={item} className="mt-10 md:mt-12 flex items-center gap-4 md:gap-5">
+          {/* Social icons */}
+          <motion.div variants={item} className="mt-8 md:mt-10 flex items-center gap-4 md:gap-5">
             {socials.map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
@@ -140,37 +191,6 @@ export default function Hero() {
             ))}
           </motion.div>
         </motion.div>
-
-        {/* ── Right: Portrait Card ── */}
-        <FadeIn delay={0.35} direction="left" className="flex-shrink-0">
-          <div className="relative">
-            {/* Subtle violet glow behind the card */}
-            <div className="pointer-events-none absolute -inset-3 rounded-3xl bg-violet-600/15 blur-[40px] -z-10" />
-
-            {/* Card */}
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_8px_40px_rgba(0,0,0,0.35),0_0_30px_rgba(139,92,246,0.10)] w-[200px] sm:w-[240px] lg:w-[280px]">
-
-              {/* Portrait image — aspect-[4/5] gives a clean portrait crop */}
-              <div className="relative aspect-[4/5]">
-                <Image
-                  src="/images/MyPhoto.png"
-                  alt="Portrait of Ammar Babasit"
-                  fill
-                  priority
-                  className="object-cover object-top"
-                />
-                {/* Gradient fade at bottom to blend into the label */}
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0c0c14]/95 via-[#0c0c14]/40 to-transparent" />
-              </div>
-
-              {/* Name / role label overlaid at the bottom */}
-              <div className="absolute bottom-0 inset-x-0 px-4 py-3.5">
-                <p className="text-sm font-semibold text-white leading-snug">Ammar Babasit</p>
-                <p className="text-[11px] text-slate-400 mt-0.5">Software Engineering Student</p>
-              </div>
-            </div>
-          </div>
-        </FadeIn>
 
       </div>
 
