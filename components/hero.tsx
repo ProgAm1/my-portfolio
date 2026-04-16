@@ -1,4 +1,4 @@
-import { ArrowDown, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { ArrowDown, Download, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import Image from "next/image";
 import HeroBackground from "@/components/hero-background";
 
@@ -88,6 +88,14 @@ export default function Hero() {
               className="w-full sm:w-auto text-center rounded-xl sm:rounded-full border border-white/10 bg-white/5 px-6 py-3.5 md:py-3 text-sm font-semibold text-slate-300 backdrop-blur-sm transition-all hover:border-violet-500/50 hover:bg-white/10 hover:text-white"
             >
               Get In Touch
+            </a>
+            <a
+              href="/CV/Ammar_Yaser_Babaset_Software_Intern.pdf"
+              download
+              className="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-full border border-white/10 bg-white/5 px-6 py-3.5 md:py-3 text-sm font-semibold text-slate-300 backdrop-blur-sm transition-all hover:border-violet-500/50 hover:bg-white/10 hover:text-white"
+            >
+              <Download size={15} />
+              Download CV
             </a>
           </div>
 
